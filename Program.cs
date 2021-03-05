@@ -20,6 +20,7 @@ namespace HomeTasksJunior
             ulong  amountFirewood;  // 8
             float  armorStrength;   // 9
             double buildingCost;    // 10
+            bool   isDamagePlayer;  // 11
         }
     }
 }
