@@ -24,7 +24,6 @@ namespace Lesson06_QuestionToUser
 
             Console.WriteLine($"Вас зовут {name}, вам {age}, вы {zodiacSign} и работаете на {work}");
 
-
             Console.ReadKey();
         }
     }
