@@ -10,23 +10,18 @@ namespace Lesson05_Hospital
     {
         static void Main(string[] args)
         {
+            int onePersonReceptionTimeInMinutes = 10;         
+            int oneHourInMinutes = 60;
+            int oneMinutes = 60;
 
-            int countPeople;
+            Console.Write("Введите кол-во старушек:");
+            int numberOldLadies = Convert.ToInt32(Console.ReadLine());
+                    
+            int totalWaitingTimeInMinutes = numberOldLadies * onePersonReceptionTimeInMinutes;
+            float waitingTimeInHours = Convert.ToSingle(totalWaitingTimeInMinutes) / oneHourInMinutes;
+            float waitingTimeInMinutes = (waitingTimeInHours - totalWaitingTimeInMinutes / oneHourInMinutes) * oneMinutes; 
 
-
-            Console.WriteLine("Введите кол-во старушек:");
-
-
-            // time result
-
-
-
-            //Пользователь вводит кол - во людей в очереди.
-            //Фиксированное время приема одного человека всегда равно 10 минутам.
-            //Пример ввода: Введите кол-во старушек: 14
-            //Пример вывода: "Вы должны отстоять в очереди 2 часа и 20 минут."
-
-            Console.WriteLine($"Вы должны отстоять в очереди {} часа и {} минут.");
+            Console.WriteLine($"Вы должны отстоять в очереди {waitingTimeInHours.ToString("#")} часа и {waitingTimeInMinutes.ToString()} минут.");
 
             Console.ReadKey();
         }
