@@ -19,7 +19,7 @@ namespace Lesson05_Hospital
                     
             int totalWaitingTimeInMinutes = numberOldLadies * onePersonReceptionTimeInMinutes;
             float waitingTimeInHours = Convert.ToSingle(totalWaitingTimeInMinutes) / oneHourInMinutes;
-            float waitingTimeInMinutes = (waitingTimeInHours - totalWaitingTimeInMinutes / oneHourInMinutes) * oneMinutes; 
+            float waitingTimeInMinutes = (waitingTimeInHours - totalWaitingTimeInMinutes / oneHourInMinutes) * oneMinutes;  
 
             Console.WriteLine($"Вы должны отстоять в очереди {waitingTimeInHours.ToString("#")} часа и {waitingTimeInMinutes.ToString()} минут.");
 
