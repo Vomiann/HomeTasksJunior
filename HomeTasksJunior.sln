@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson07_Msg", "Lesson07_Ms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson08_ExitLoop", "Lesson08_ExitLoop\Lesson08_ExitLoop.csproj", "{58FAB09F-E8B4-4402-BEDF-EF07DCE7E175}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson09_CurrencyConverter", "Lesson09_CurrencyConverter\Lesson09_CurrencyConverter.csproj", "{1DDA3187-CF9F-42DE-A541-D979CFB7A798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{58FAB09F-E8B4-4402-BEDF-EF07DCE7E175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58FAB09F-E8B4-4402-BEDF-EF07DCE7E175}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58FAB09F-E8B4-4402-BEDF-EF07DCE7E175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DDA3187-CF9F-42DE-A541-D979CFB7A798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDA3187-CF9F-42DE-A541-D979CFB7A798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDA3187-CF9F-42DE-A541-D979CFB7A798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DDA3187-CF9F-42DE-A541-D979CFB7A798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

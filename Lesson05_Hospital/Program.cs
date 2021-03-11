@@ -10,18 +10,19 @@ namespace Lesson05_Hospital
     {
         static void Main(string[] args)
         {
-            int onePersonReceptionTimeInMinutes = 10;         
-            int oneHourInMinutes = 60;
+            int onePersonTime = 10;         
+            int oneHour = 60;
             int oneMinutes = 60;
 
             Console.Write("Введите кол-во старушек:");
             int numberOldLadies = Convert.ToInt32(Console.ReadLine());
                     
-            int totalWaitingTimeInMinutes = numberOldLadies * onePersonReceptionTimeInMinutes;
-            float waitingTimeInHours = Convert.ToSingle(totalWaitingTimeInMinutes) / oneHourInMinutes;
-            float waitingTimeInMinutes = (waitingTimeInHours - totalWaitingTimeInMinutes / oneHourInMinutes) * oneMinutes;  
+            int totalWaitingTime = numberOldLadies * onePersonTime;
 
-            Console.WriteLine($"Вы должны отстоять в очереди {waitingTimeInHours.ToString("#")} часа и {waitingTimeInMinutes.ToString()} минут.");
+            int waitingHours = totalWaitingTime / oneHour;
+            int waitingMinutes = totalWaitingTime - waitingHours * oneMinutes;
+             
+            Console.WriteLine($"Вы должны отстоять в очереди {waitingHours} часа и {waitingMinutes} минут.");
 
             Console.ReadKey();
         }
