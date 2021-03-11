@@ -12,7 +12,7 @@ namespace Lesson07_Msg
         {
             int numberMessages = 5;
 
-            Console.Write("Ввведите свое сообщение: ");
+            Console.Write("Введите свое сообщение: ");
             string userMessage = Console.ReadLine();
 
             for (int i = 0; i < numberMessages; i++)
