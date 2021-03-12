@@ -26,7 +26,6 @@ namespace Lesson08_ExitLoop
                 Console.WriteLine(@"""Ключевое"" слово Принято! Вы успешно вышли из программы!");              
             }
 
-
             Console.ReadKey();
         }
     }
