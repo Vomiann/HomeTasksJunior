@@ -14,15 +14,18 @@ namespace Lesson08_ExitLoop
             Console.Write(@"Введите ""ключевое"" слово для выхода из программы: ");
             string userInput = Console.ReadLine();
 
-            while (true)
-            {
-                if (userInput == wordExit)
-                {
-                    Console.WriteLine(@"""Ключевое"" слово Принято! Вы успешно вышли из программы!");
-                    break;
-                }
+            while (userInput != wordExit)
+            {               
                 Console.WriteLine(@"Не верно введено ""Ключевое"" слово! Вы не вышли из программы!");
+                Console.Write(@"Введите ""ключевое"" слово для выхода из программы: ");
+                userInput = Console.ReadLine();
             }
+
+            if (userInput == wordExit)
+            {
+                Console.WriteLine(@"""Ключевое"" слово Принято! Вы успешно вышли из программы!");              
+            }
+
 
             Console.ReadKey();
         }
