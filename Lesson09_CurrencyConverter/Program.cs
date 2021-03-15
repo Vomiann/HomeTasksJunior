@@ -38,11 +38,15 @@ namespace Lesson09_CurrencyConverter
             {
                 Console.Write("Введите требуемое действие(Введите exit для выхода или введите одно из чисел в диапазоне 1-6): ");
                 inputUser = Console.ReadLine();
-                               
+
                 if (inputUser == "1" || inputUser == "2" || inputUser == "3" || inputUser == "4" || inputUser == "5" || inputUser == "6")
                 {
                     Console.Write("Сколько вы хотите сконвертьировать валюты? Введите значение: ");
                     valueCurrency = Convert.ToSingle(Console.ReadLine());
+                }
+                else if (inputUser == "exit")
+                {
+                    break;
                 }
                 else
                 {
@@ -81,10 +85,7 @@ namespace Lesson09_CurrencyConverter
                         numberEur -= valueCurrency;
                         valueCurrency *= usdRateToEur;
                         numberUsd += valueCurrency;                                                
-                        break;
-                    case "exit":
-                        inputUser = wordExit;
-                        break;
+                        break;                    
                 }
                 Console.WriteLine($"Ваш текущий баланс составляет: RUB:{numberRub}(руб.) EUR:{numberEur}(евро) USD:{numberUsd}(долларов)");
             }
