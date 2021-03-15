@@ -22,6 +22,9 @@ namespace Lesson09_CurrencyConverter
             float eurRateToUsd = 1.19f;
             float usdRateToRub = 73.08f;
             float usdRateToEur = 0.84f;
+            string msgNotRub = "У вас не достаточно Рублей";
+            string msgNotEur = "У вас не достаточно Евро";
+            string msgNotUsd = "У вас не достаточно Долларов";
 
             Console.WriteLine($"Здравствуйте! Ваш текущий баланс составляет: RUB:{numberRub}(руб.) EUR:{numberEur}(евро) USD:{numberUsd}(долларов)");
             Console.WriteLine();
@@ -43,49 +46,90 @@ namespace Lesson09_CurrencyConverter
                 {
                     Console.Write("Сколько вы хотите сконвертьировать валюты? Введите значение: ");
                     valueCurrency = Convert.ToSingle(Console.ReadLine());
-                }
-                else if (inputUser == wordExit)
-                {
-                    break;
-                }
+                }                
                 else
                 {
-                    Console.WriteLine("В данной программе отсутствует выбранное действие. Повторите попытку.");
                     continue;
-                }                              
-
+                }
+                               
                 switch (inputUser)
                 {
                     case "1":
-                        numberRub -= valueCurrency;
-                        valueCurrency *= rubRateToUsd;
-                        numberUsd += valueCurrency;
+                        if (numberRub >= valueCurrency )
+                        {
+                            numberRub -= valueCurrency;
+                            valueCurrency *= rubRateToUsd;
+                            numberUsd += valueCurrency;
+                        }
+                        else
+                        {
+                            Console.WriteLine(msgNotRub); 
+                        }                        
                     break;
                     case "2":
-                        numberRub -= valueCurrency;
-                        valueCurrency *= rubRateToEur;
-                        numberUsd += valueCurrency;
+                        if (numberRub >= valueCurrency)
+                        {
+                            numberRub -= valueCurrency;
+                            valueCurrency *= rubRateToEur;
+                            numberUsd += valueCurrency;
+                        }
+                        else
+                        {
+                            Console.WriteLine(msgNotRub);
+                        }                                                
                         break;
-                    case "3":                        
-                        numberEur -= valueCurrency;
-                        valueCurrency *= eurRateToRub;
-                        numberRub += valueCurrency;
+                    case "3":
+                        if (numberEur >= valueCurrency)
+                        {
+                            numberEur -= valueCurrency;
+                            valueCurrency *= eurRateToRub;
+                            numberRub += valueCurrency;
+                        }
+                        else
+                        {
+                            Console.WriteLine(msgNotEur);
+                        }                                                
                         break;
                     case "4":
-                        numberEur -= valueCurrency;
-                        valueCurrency *= eurRateToUsd;
-                        numberUsd += valueCurrency;
+                        if (numberEur >= valueCurrency)
+                        {
+                            numberEur -= valueCurrency;
+                            valueCurrency *= eurRateToUsd;
+                            numberUsd += valueCurrency;
+                        }
+                        else
+                        {
+                            Console.WriteLine(msgNotEur);
+                        }
+                        
                         break;
                     case "5":
-                        numberEur -= valueCurrency;
-                        valueCurrency *= usdRateToRub;
-                        numberUsd += valueCurrency;                                                
+                        if (numberUsd >= valueCurrency)
+                        {
+                            numberUsd -= valueCurrency;
+                            valueCurrency *= usdRateToRub;
+                            numberRub += valueCurrency;
+                        }
+                        else
+                        {
+                            Console.WriteLine(msgNotUsd);
+                        }                                                                                               
                         break;
                     case "6":
-                        numberEur -= valueCurrency;
-                        valueCurrency *= usdRateToEur;
-                        numberUsd += valueCurrency;                                                
-                        break;                    
+                        if (numberEur >= valueCurrency)
+                        {
+                            numberEur -= valueCurrency;
+                            valueCurrency *= usdRateToEur;
+                            numberUsd += valueCurrency;
+                        }
+                        else
+                        {
+                            Console.WriteLine(msgNotUsd);
+                        }                                                                                            
+                        break;
+                    default:
+                        
+                        break;
                 }
                 Console.WriteLine($"Ваш текущий баланс составляет: RUB:{numberRub}(руб.) EUR:{numberEur}(евро) USD:{numberUsd}(долларов)");
             }
