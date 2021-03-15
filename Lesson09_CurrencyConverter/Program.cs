@@ -125,10 +125,7 @@ namespace Lesson09_CurrencyConverter
                         {
                             Console.WriteLine(msgNotUsd);
                         }                                                                                            
-                        break;
-                    default:
-                        
-                        break;
+                        break;                    
                 }
                 Console.WriteLine($"Ваш текущий баланс составляет: RUB:{numberRub}(руб.) EUR:{numberEur}(евро) USD:{numberUsd}(долларов)");
             }
