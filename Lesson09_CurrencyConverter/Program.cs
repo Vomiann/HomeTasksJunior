@@ -44,7 +44,7 @@ namespace Lesson09_CurrencyConverter
                     Console.Write("Сколько вы хотите сконвертьировать валюты? Введите значение: ");
                     valueCurrency = Convert.ToSingle(Console.ReadLine());
                 }
-                else if (inputUser == "exit")
+                else if (inputUser == wordExit)
                 {
                     break;
                 }
