@@ -100,8 +100,7 @@ namespace Lesson09_CurrencyConverter
                         else
                         {
                             Console.WriteLine(msgNotEur);
-                        }
-                        
+                        }                      
                         break;
                     case "5":
                         if (numberUsd >= valueCurrency)
