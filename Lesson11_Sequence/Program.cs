@@ -13,12 +13,9 @@ namespace Lesson11_Sequence
             int numberStep = 7;            
             int totalNumber = 98;           
 
-            for (int i= 0; i <= totalNumber; i+= numberStep)
-            {
-                if (i != 0)
-                {
-                    Console.Write(i + " ");
-                }
+            for (int i= 7; i <= totalNumber; i+= numberStep)
+            {                
+                Console.Write(i + " ");                
             }
             Console.ReadKey();
         }
