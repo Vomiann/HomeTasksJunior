@@ -27,8 +27,7 @@ namespace Lesson13_Password
                 }
                 else
                 {
-                    Console.WriteLine($"Неверный пароль!");
-                    continue;
+                    Console.WriteLine($"Неверный пароль!");                    
                 }
             }
             Console.WriteLine("Программа завершена! У вас закончились попытки");
