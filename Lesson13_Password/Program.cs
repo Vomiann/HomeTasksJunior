@@ -13,21 +13,22 @@ namespace Lesson13_Password
             int countAttempts = 3;
             string password = "password";
             string secretMessage = "SecretMessage";
-            string inputUser;
+            string inputUser;                       
 
-            while (countAttempts != 0)
+            for (int i = 0; i < countAttempts; i++)
             {
                 Console.Write("Введите пароль: ");
                 inputUser = Console.ReadLine();
 
                 if (inputUser == password)
                 {
-                    Console.WriteLine($"Пароль принят! Секретное сообщение: {secretMessage}");                   
+                    Console.WriteLine($"Пароль принят! Секретное сообщение: {secretMessage}");
+                    break;
                 }
                 else
                 {
                     Console.WriteLine($"Неверный пароль!");
-                    countAttempts--;
+                    continue;
                 }
             }
             Console.WriteLine("Программа завершена! У вас закончились попытки");
