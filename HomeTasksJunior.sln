@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson14_FightWithBoss", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson15_CorrectStrings", "Lesson15_CorrectStrings\Lesson15_CorrectStrings.csproj", "{2CD66FB5-8F04-4649-B736-E8AE9F81B6A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson16_MaxElement", "Lesson16_MaxElement\Lesson16_MaxElement.csproj", "{9A9F4A43-5204-41D9-866C-A7A150AC7792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{2CD66FB5-8F04-4649-B736-E8AE9F81B6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CD66FB5-8F04-4649-B736-E8AE9F81B6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CD66FB5-8F04-4649-B736-E8AE9F81B6A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A9F4A43-5204-41D9-866C-A7A150AC7792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9F4A43-5204-41D9-866C-A7A150AC7792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9F4A43-5204-41D9-866C-A7A150AC7792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9F4A43-5204-41D9-866C-A7A150AC7792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
