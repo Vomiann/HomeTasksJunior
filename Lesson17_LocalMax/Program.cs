@@ -12,11 +12,11 @@ namespace Lesson17_LocalMax
         {
             int[] array = new int[30];            
             Random random = new Random();
-
+            
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = random.Next(1, 31);
-            }
+                array[i] = random.Next(1,31);
+            }            
 
             Console.WriteLine("Локальные максимумы: ");
             if (array[0] > array[1])

@@ -20,34 +20,20 @@ namespace Lesson15_CorrectStrings
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
-                {                   
-                    Console.Write(array[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
-
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
                 {
                     if (i == numberRow)
                     {
                         sumResult += array[i, j];
-                    }                                       
-                }                                
-            }
-
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {                    
+                    }
                     if (j == numberColumn)
                     {
                         multiplicationResult *= array[i, j];
                     }
+                    Console.Write(array[i, j] + " ");
                 }
+                Console.WriteLine();
             }
-
+                       
             Console.WriteLine($"Сумма второй строки: {sumResult}");
             Console.WriteLine($"Произведение первого столбца: {multiplicationResult}");
 
