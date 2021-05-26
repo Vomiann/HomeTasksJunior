@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson16_MaxElement", "Less
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson17_LocalMax", "Lesson17_LocalMax\Lesson17_LocalMax.csproj", "{2EA9BF8A-564B-4ABC-9E87-CEC10B57188B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson18_DynamicArray", "Lesson18_DynamicArray\Lesson18_DynamicArray.csproj", "{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{2EA9BF8A-564B-4ABC-9E87-CEC10B57188B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EA9BF8A-564B-4ABC-9E87-CEC10B57188B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EA9BF8A-564B-4ABC-9E87-CEC10B57188B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

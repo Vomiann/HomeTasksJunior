@@ -10,13 +10,16 @@ namespace Lesson17_LocalMax
     {
         static void Main(string[] args)
         {
-            int[] array = new int[30];            
-            Random random = new Random();
-            
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = random.Next(1,31);
-            }            
+            //int[] array = new int[30];
+
+            int[] array = new int[] {2,5,6,3 };
+
+            //Random random = new Random();
+
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    array[i] = random.Next(1,31);
+            //}            
 
             Console.WriteLine("Локальные максимумы: ");
             if (array[0] > array[1])
