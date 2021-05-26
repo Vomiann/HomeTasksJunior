@@ -10,29 +10,28 @@ namespace Lesson17_LocalMax
     {
         static void Main(string[] args)
         {
-            //int[] array = new int[30];
+            int[] array = new int[30];
 
-            int[] array = new int[] {2,5,6,3 };
+          
+            Random random = new Random();
 
-            //Random random = new Random();
-
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    array[i] = random.Next(1,31);
-            //}            
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(1, 31);
+            }
 
             Console.WriteLine("Локальные максимумы: ");
             if (array[0] > array[1])
             {
-                Console.Write(" "+array[0]);
+                Console.Write(" " + array[0]);
             }
 
-            for (int i = 0; i < array.Length; i++)
-            {                
-                if (i != 0 && i!= array.Length - 1 &&  array[i] > array[i+1] && array[i] > array[i-1])
+            for (int i = 1; i < array.Length-1; i++)
+            {
+                if (i != array.Length - 1 && array[i] > array[i + 1] && array[i] > array[i - 1])
                 {
                     Console.Write(" " + array[i]);
-                }                
+                }
             }
 
             if (array[array.Length - 1] > array[array.Length - 2])
