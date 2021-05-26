@@ -25,28 +25,15 @@ namespace Lesson15_CorrectStrings
                 }
                 Console.WriteLine();
             }
-
-            for (int i = 0; i < array.GetLength(0); i++)
+                 
+            for (int j = 0; j < array.GetLength(1); j++)
             {
-                if (i == numberRow)
-                {
-                    for (int j = 0; j < array.GetLength(1); j++)
-                    {
-                        sumResult += array[i, j];
-                    }
-                }
+                sumResult += array[numberRow, j];                
             }
 
             for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    if (j == numberColumn)
-                    {
-                        multiplicationResult *= array[i, j];
-                    }
-                    break;
-                }
+            {               
+                multiplicationResult *= array[i, numberColumn];
             }
 
             Console.WriteLine($"Сумма второй строки: {sumResult}");
