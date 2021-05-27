@@ -28,7 +28,7 @@ namespace Lesson17_LocalMax
 
             for (int i = 1; i < array.Length-1; i++)
             {
-                if (i != array.Length - 1 && array[i] > array[i + 1] && array[i] > array[i - 1])
+                if (array[i] > array[i + 1] && array[i] > array[i - 1])
                 {
                     Console.Write(" " + array[i]);
                 }
