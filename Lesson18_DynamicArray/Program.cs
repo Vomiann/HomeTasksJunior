@@ -16,16 +16,17 @@ namespace Lesson18_DynamicArray
             int [] arrayNumbers = new int[0];
             int[] tempArrayNumbers;
             int sumResult = 0;
+            int number;
 
-            while (inputUser != wordExit.ToLower())
+            while (inputUser.ToLower() != wordExit)
             {
                 Console.Write("Введите число: ");
                 inputUser = Console.ReadLine();
-
-                if (inputUser.All(Char.IsDigit))
+                              
+                if (int.TryParse(inputUser, out number))
                 {
                     tempArrayNumbers = new int[arrayNumbers.Length + 1];
-                    tempArrayNumbers[tempArrayNumbers.Length - 1] = Convert.ToInt32(inputUser);
+                    tempArrayNumbers[tempArrayNumbers.Length - 1] = number;
 
                     for (int i = 0; i < arrayNumbers.Length; i++)
                     {
@@ -35,7 +36,7 @@ namespace Lesson18_DynamicArray
                     arrayNumbers = tempArrayNumbers;
                 }                             
                 
-                if (inputUser == commandSum.ToLower())
+                if (inputUser.ToLower() == commandSum)
                 {
                     for (int i = 0; i < arrayNumbers.Length; i++)
                     {
