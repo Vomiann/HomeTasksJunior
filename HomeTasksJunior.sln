@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson17_LocalMax", "Lesson
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson18_DynamicArray", "Lesson18_DynamicArray\Lesson18_DynamicArray.csproj", "{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson19(Methods)_PersonnelAccounting", "Lesson19(Methods)_PersonnelAccounting\Lesson19(Methods)_PersonnelAccounting.csproj", "{669C87D5-9D5B-46E6-89BE-813C331D5155}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75AF9C35-3ED6-4563-BDD3-EE3EF3E39BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{669C87D5-9D5B-46E6-89BE-813C331D5155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{669C87D5-9D5B-46E6-89BE-813C331D5155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{669C87D5-9D5B-46E6-89BE-813C331D5155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{669C87D5-9D5B-46E6-89BE-813C331D5155}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
