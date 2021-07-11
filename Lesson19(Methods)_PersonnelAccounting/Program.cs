@@ -7,10 +7,10 @@ namespace Lesson19_Methods__PersonnelAccounting
     {
         static void Main(string[] args)
         {
-            string[] arrayPositions = new string[0];
-            string[] arrayNames = new string[0];
-            string inputUser = string.Empty;
-            string commandQuit = "5";
+            string[] positions = new string[0];
+            string[] names = new string[0];
+            string inputUser = string.Empty;            
+            bool isQuit = false;
 
             Console.WriteLine("1) Добавить досье ");
             Console.WriteLine("2) Вывести все досье (в одну строку через “-” фио и должность с порядковым номером в начале)");
@@ -19,7 +19,7 @@ namespace Lesson19_Methods__PersonnelAccounting
             Console.WriteLine("5) Выход ");
             Console.WriteLine();
 
-            while (inputUser != commandQuit)
+            while (isQuit != true)
             {
                 Console.Write("Введите один из пунктов меню (от 1 до 5): ");
                 inputUser = Console.ReadLine();
@@ -27,19 +27,20 @@ namespace Lesson19_Methods__PersonnelAccounting
                 switch (inputUser)
                 {
                     case "1":
-                        CreateDossier(ref arrayPositions, ref arrayNames);
+                        AddDossier(ref positions, ref names);
                         break;
                     case "2":
-                        ReadAllDossiers(arrayPositions, arrayNames);
+                        ReadAllDossiers(positions, names);
                         break;
                     case "3":
-                        DeleteDossier(ref arrayPositions, ref arrayNames);
+                        DeleteEmployee(ref positions, ref names);
                         break;
                     case "4":
-                        FindSurname(arrayNames);
+                        SearchEmployee(names, positions);                        
                         break;
                     case "5":
-                        Console.WriteLine("Вы вышли из программы!");
+                        isQuit = true;
+                        Console.WriteLine("Вы вышли из программы!");                        
                         break;
                     default:
                         Console.WriteLine("Выбранного пункта меню не существует. Укажите значение от 1 до 5");
@@ -49,39 +50,39 @@ namespace Lesson19_Methods__PersonnelAccounting
 
             Console.ReadKey();
         }
-        static void CreateDossier(ref string[] arrayPositions, ref string[] arrayNames)
+
+        static string[] AddItemInArray(string value, string []array)
+        {
+            string[] tempArray = new string[array.Length + 1];
+            tempArray[tempArray.Length - 1] = value;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                tempArray[i] = array[i];
+            }
+            array = tempArray;
+
+            return array;
+        }
+
+        static void AddDossier(ref string[] positions, ref string[] names)
         {
             Console.Write("Введите Ф.И.О: ");
-            string inputUser = Console.ReadLine();
-            string[] tempArrayNames = new string[arrayNames.Length + 1];
-            tempArrayNames[tempArrayNames.Length - 1] = inputUser;
-
-            for (int i = 0; i < arrayNames.Length; i++)
-            {
-                tempArrayNames[i] = arrayNames[i];
-            }
-            arrayNames = tempArrayNames;
+            string inputUser = Console.ReadLine();            
+            names = AddItemInArray(inputUser, names);
 
             Console.Write("Введите Должность: ");
             inputUser = Console.ReadLine();
-
-            string[] tempArrayPositions = new string[arrayPositions.Length + 1];
-            tempArrayPositions[tempArrayPositions.Length - 1] = inputUser;
-
-            for (int i = 0; i < arrayPositions.Length; i++)
-            {
-                tempArrayPositions[i] = arrayPositions[i];
-            }
-            arrayPositions = tempArrayPositions;
+            positions = AddItemInArray(inputUser, positions);
         }
 
-        static void ReadAllDossiers(string[] arrayPositions, string[] arrayNames)
+        static void ReadAllDossiers(string[] positions, string[] names)//TODO: убрать null
         {
-            if (arrayPositions != null)
+            if (positions != null)
             {
-                for (int i = 0; i < arrayNames.Length; i++)
+                for (int i = 0; i < names.Length; i++)
                 {
-                    Console.WriteLine($"-[{i}] ФИО: {arrayNames[i]} Должность: {arrayPositions[i]}");
+                    Console.WriteLine($"-[{i}] ФИО: {names[i]} Должность: {positions[i]}");
                 }
             }
             else
@@ -90,34 +91,46 @@ namespace Lesson19_Methods__PersonnelAccounting
             }
         }
 
-        static void FindSurname(string[] arrayNames)
+        static void SearchEmployee(string[] names, string[] positions)
         {
-            Console.Write("Введите Фамилию: ");
+            Console.Write("Введите Ф.И.О сотрудника: ");
             string inputUser = Console.ReadLine();
-            bool isSurname = false;
+            bool employeeFound = false;
 
-            if (arrayNames != null)
+            for (int i = 0; i < names.Length; i++)
             {
-                for (int i = 0; i < arrayNames.Length; i++)
+                if (inputUser.Contains(names[i]))
                 {
-                    if (inputUser.Contains(arrayNames[i]))
-                    {
-                        isSurname = true;
-                        Console.WriteLine($"Результат поиска: {arrayNames[i]}");
-                    }
+                    employeeFound = true;
+                    Console.WriteLine($"Результат поиска: Сотрудник:{names[i]} Должность: {positions[i]}");
                 }
             }
-
-            if (!isSurname)
+            
+            if (employeeFound == false)
             {
                 Console.WriteLine("Фамилия не найдена!");
             }
         }
 
-        static void DeleteDossier(ref string[] arrayPositions, ref string[] arrayNames)
+        static void DeleteEmployee(ref string[] positions, ref string[] names)
         {
-            arrayPositions = null;
-            arrayNames = null;
+            Console.WriteLine("Введите Ф.И.О сотрудника для удаления: ");
+            string inputUser = Console.ReadLine();
+
+            for (int i = 0; i < names.Length; i++)
+            {
+                if (names[i].Contains(inputUser))
+                {                    
+                    names = AddItemInArray(names[i], new string[0]);
+                    positions = AddItemInArray(positions[i], new string[0]);
+                }
+                else
+                {
+
+                }
+            }
+
+
             Console.WriteLine("Досье удалены!");
         }
     }

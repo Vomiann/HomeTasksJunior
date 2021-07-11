@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson21_READINT", "Lesson2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson22_BraveNewWorld", "Lesson22_BraveNewWorld\Lesson22_BraveNewWorld.csproj", "{2A79DFB3-741B-453B-BE8B-E277E67320AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson23_Shuffle", "Lesson23_Shuffle\Lesson23_Shuffle.csproj", "{81509C3F-C762-4481-8EED-E238157C7AC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{2A79DFB3-741B-453B-BE8B-E277E67320AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A79DFB3-741B-453B-BE8B-E277E67320AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A79DFB3-741B-453B-BE8B-E277E67320AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81509C3F-C762-4481-8EED-E238157C7AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81509C3F-C762-4481-8EED-E238157C7AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81509C3F-C762-4481-8EED-E238157C7AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81509C3F-C762-4481-8EED-E238157C7AC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,18 +6,18 @@ namespace Lesson21_READINT
     {
         static void Main(string[] args)
         {
-            int result = ConvertToNumber();
+            int result = TryConvertToNumber();
             Console.WriteLine($"Число: {result}");
 
             Console.ReadKey();
         }
 
-        static int ConvertToNumber()
+        static int TryConvertToNumber()
         {
             int number = 0;
             bool isNumber = false;
 
-            while (!isNumber)
+            while (isNumber == false)
             {
                 Console.Write("Введите число: ");
                 string inputUser = Console.ReadLine();
