@@ -17,6 +17,7 @@ namespace Lesson23_Shuffle
             Console.WriteLine();
 
             Shuffle(ref array);
+
             for (int i = 0; i < array.Length; i++)
             {
                 Console.Write(array[i]);

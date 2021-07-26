@@ -6,24 +6,24 @@ namespace Lesson21_READINT
     {
         static void Main(string[] args)
         {
-            int result = ReturnNumberByRequestTryParseTrue();
+            int result = ReturnNumberIsTryParse();
             Console.WriteLine($"Число: {result}");
 
             Console.ReadKey();
         }
 
-        static int ReturnNumberByRequestTryParseTrue() 
+        static int ReturnNumberIsTryParse() 
         {
             int number = 0;
-            bool isNumber = false;
+            bool isConverted = false;
 
-            while (isNumber == false)
+            while (isConverted == false)
             {
                 Console.Write("Введите число: ");
                 string inputUser = Console.ReadLine();
                 if (int.TryParse(inputUser, out number))
                 {
-                    isNumber = true;
+                    isConverted = true;
                 }
             }
 

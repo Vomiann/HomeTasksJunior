@@ -82,7 +82,7 @@ namespace Lesson19_Methods__PersonnelAccounting
             return array;
         }
 
-        static int ReturnNumberByRequestTryParseTrue(string message)
+        static int ReturnNumberIsTryParse(string message)
         {
             int number = 0;
             bool isNumber = false;
@@ -152,7 +152,7 @@ namespace Lesson19_Methods__PersonnelAccounting
             if (positions.Length > 0)
             {
                 string message = "Введите индекс сотрудника для удаления: ";
-                int number = ReturnNumberByRequestTryParseTrue(message);
+                int number = ReturnNumberIsTryParse(message);
                 names = DeleteItemInArray(number, names);
                 positions = DeleteItemInArray(number, positions);
 
