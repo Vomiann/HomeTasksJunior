@@ -6,13 +6,13 @@ namespace Lesson21_READINT
     {
         static void Main(string[] args)
         {
-            int result = RequestToConvertStringToNumber();
+            int result = ReturnNumberByRequestTryParseTrue();
             Console.WriteLine($"Число: {result}");
 
             Console.ReadKey();
         }
 
-        static int RequestToConvertStringToNumber()
+        static int ReturnNumberByRequestTryParseTrue() 
         {
             int number = 0;
             bool isNumber = false;
