@@ -6,13 +6,13 @@ namespace Lesson21_READINT
     {
         static void Main(string[] args)
         {
-            int result = TryConvertToNumber();
+            int result = RequestToConvertStringToNumber();
             Console.WriteLine($"Число: {result}");
 
             Console.ReadKey();
         }
 
-        static int TryConvertToNumber()
+        static int RequestToConvertStringToNumber()
         {
             int number = 0;
             bool isNumber = false;
