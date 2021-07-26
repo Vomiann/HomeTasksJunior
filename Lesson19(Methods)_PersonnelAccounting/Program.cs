@@ -9,7 +9,7 @@ namespace Lesson19_Methods__PersonnelAccounting
         {
             string[] positions = new string[0];
             string[] names = new string[0];
-            string inputUser = string.Empty;            
+            string inputUser;            
             bool isQuit = false;
 
             Console.WriteLine("1) Добавить досье ");
@@ -30,10 +30,10 @@ namespace Lesson19_Methods__PersonnelAccounting
                         AddDossier(ref positions, ref names);
                         break;
                     case "2":
-                        ReadAllDossiers(positions, names);
+                        ShowDossiers(positions, names);
                         break;
                     case "3":
-                        DeleteEmployeeByIndex(ref positions, ref names);
+                        DeleteDossier(ref positions, ref names);
                         break;
                     case "4":
                         SearchEmployee(names, positions);                        
@@ -46,12 +46,13 @@ namespace Lesson19_Methods__PersonnelAccounting
                         Console.WriteLine("Выбранного пункта меню не существует. Укажите значение от 1 до 5");
                         break;
                 }
+                Console.Clear();
             }
 
             Console.ReadKey();
         }
 
-        static string[] AddItemInArray(string value, string []array)
+        static string[] AddItem(string value, string []array)
         {
             string[] tempArray = new string[array.Length + 1];
             tempArray[tempArray.Length - 1] = value;
@@ -65,7 +66,7 @@ namespace Lesson19_Methods__PersonnelAccounting
             return array;
         }
 
-        static string[] DeleteItemInArray(int index, string[] array)
+        static string[] DeleteItem(int index, string[] array)
         {
             string[] tempArray = new string[array.Length -1];
             int tempArrayIndex = 0;
@@ -104,14 +105,14 @@ namespace Lesson19_Methods__PersonnelAccounting
         {
             Console.Write("Введите Ф.И.О: ");
             string inputUser = Console.ReadLine();            
-            names = AddItemInArray(inputUser, names);
+            names = AddItem(inputUser, names);
 
             Console.Write("Введите Должность: ");
             inputUser = Console.ReadLine();
-            positions = AddItemInArray(inputUser, positions);
+            positions = AddItem(inputUser, positions);
         }
 
-        static void ReadAllDossiers(string[] positions, string[] names)
+        static void ShowDossiers(string[] positions, string[] names)
         {
             if (positions.Length > 0)
             {
@@ -147,14 +148,14 @@ namespace Lesson19_Methods__PersonnelAccounting
             }
         }
 
-        static void DeleteEmployeeByIndex(ref string[] positions, ref string[] names)
+        static void DeleteDossier(ref string[] positions, ref string[] names)
         {
             if (positions.Length > 0)
             {
                 string message = "Введите индекс сотрудника для удаления: ";
                 int number = ReturnNumberIsTryParse(message);
-                names = DeleteItemInArray(number, names);
-                positions = DeleteItemInArray(number, positions);
+                names = DeleteItem(number, names);
+                positions = DeleteItem(number, positions);
 
                 Console.WriteLine("Досье удалено!");
             }
