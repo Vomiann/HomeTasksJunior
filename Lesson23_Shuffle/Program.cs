@@ -6,7 +6,6 @@ namespace Lesson23_Shuffle
     {
         static void Main(string[] args)
         {
-            
             int[] array = new int[] { 1, 2, 3, 4, 5 };
 
             for (int i = 0; i < array.Length; i++)
@@ -28,23 +27,56 @@ namespace Lesson23_Shuffle
 
 
         static void Shuffle(ref int [] array)
-        {
+        {            
             Random random = new Random();
             int[] tempArray = new int[array.Length];
-
             int[] tempIndexArray = new int[array.Length];
+            int rndIndex;
 
-
-            for (int i = 0; i < tempArray.Length; i++)
+            for (int i = 0; i < tempIndexArray.Length; i++)
             {
-                int rndIndex = random.Next(0, array.Length);
+                rndIndex = random.Next(0, array.Length);
 
-                if (tempArray[i] != array[rndIndex])
+                if (CheckIndexInArray(tempIndexArray, rndIndex) == false)
                 {
-                    tempArray[i] = array[rndIndex];
+                    tempIndexArray[i] = rndIndex;
+                }
+                else
+                {
+                    if (tempIndexArray[i] == 0)
+                    {
+                        for (int j = 0; j < array.Length; j++)
+                        {
+                            if (tempIndexArray[i] != array[j] && CheckIndexInArray(tempIndexArray, j) == false)
+                            {
+                                tempIndexArray[i] = j;                                
+                            }                            
+                        }
+                    }
+
                 }
             }
+                      
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                tempArray[i] = array[tempIndexArray[i]];
+            }
+
             array = tempArray;
+        }
+
+        static bool CheckIndexInArray(int[] array, int index)
+        {
+            bool isIndex = false;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == index)
+                {
+                    isIndex = true;
+                }
+            }
+            return isIndex;
         }
     }
 }
