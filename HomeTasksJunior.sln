@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson24_Dictionary", "Less
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson25_QueueShop", "Lesson25_QueueShop\Lesson25_QueueShop.csproj", "{07454AD6-2017-47FA-A116-8756BDAF159F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson26_DynamicArrayV2", "Lesson26_DynamicArrayV2\Lesson26_DynamicArrayV2.csproj", "{2CDDC96E-98BD-4246-927F-6388DD3F8B06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{07454AD6-2017-47FA-A116-8756BDAF159F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07454AD6-2017-47FA-A116-8756BDAF159F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07454AD6-2017-47FA-A116-8756BDAF159F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CDDC96E-98BD-4246-927F-6388DD3F8B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CDDC96E-98BD-4246-927F-6388DD3F8B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CDDC96E-98BD-4246-927F-6388DD3F8B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CDDC96E-98BD-4246-927F-6388DD3F8B06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
