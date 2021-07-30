@@ -12,9 +12,9 @@ namespace Lesson23_Shuffle
 
             Console.WriteLine();
 
-            int[] mixedArray = Shuffle(array);
+            Shuffle(array);
 
-            ShowArray(mixedArray);
+            ShowArray(array);
 
             Console.ReadKey();
         }
@@ -28,7 +28,7 @@ namespace Lesson23_Shuffle
             }
         }
 
-        static int[] Shuffle(int[] array)
+        static void Shuffle(int[] array)
         {
             Random random = new Random();
             int randomIndex;                        
@@ -44,9 +44,7 @@ namespace Lesson23_Shuffle
                     array[randomIndex] = array[i];
                     array[i] = tempValue;
                 }
-            }
-
-            return array;
+            }          
         }
     }
 }
