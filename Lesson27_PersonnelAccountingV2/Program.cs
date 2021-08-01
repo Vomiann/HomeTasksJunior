@@ -22,7 +22,7 @@ namespace Lesson27_PersonnelAccountingV2
 
             while (isQuit != true)
             {
-                Console.Write("Введите один из пунктов меню (от 1 до 5): ");
+                Console.Write("Введите один из пунктов меню (от 1 до 4): ");
                 inputUser = Console.ReadLine();
 
                 switch (inputUser)
@@ -41,7 +41,7 @@ namespace Lesson27_PersonnelAccountingV2
                         Console.WriteLine("Вы вышли из программы!");
                         break;
                     default:
-                        Console.WriteLine("Выбранного пункта меню не существует. Укажите значение от 1 до 5");
+                        Console.WriteLine("Выбранного пункта меню не существует. Укажите значение от 1 до 4");
                         break;
                 }
             }

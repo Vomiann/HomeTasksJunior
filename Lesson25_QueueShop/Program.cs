@@ -16,7 +16,7 @@ namespace Lesson25_QueueShop
             money.Enqueue(30);
             int cashAccount = 0;            
             
-            while (money.Count != 0)
+            while (money.Count > 0)
             {                
                 cashAccount += money.Peek();
                 Console.WriteLine($"Клиент, оплатил товар на сумму {money.Peek()} у.е., Ваш счет: {cashAccount} у.е.");
