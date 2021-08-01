@@ -10,28 +10,17 @@ namespace Lesson25_QueueShop
     {
         static void Main(string[] args)
         {
-            int[] money = new int[] { 10, 20, 30 };
-            int indexMoney = 0;
+            Queue<int> money = new Queue<int>();
+            money.Enqueue(10);
+            money.Enqueue(20);
+            money.Enqueue(30);
             int cashAccount = 0;            
-            Queue<string> clients = new Queue<string>();
-            clients.Enqueue("Александр");
-            clients.Enqueue("Виталик");
-            clients.Enqueue("Дима");
-            clients.Enqueue("Бомжик");
-
-            while (clients.Count != 0)
-            {
-                if (money.Length > indexMoney)
-                {
-                    cashAccount += money[indexMoney];
-                    Console.WriteLine($"Клиент: {clients.Peek()}, оплатил товар на сумму {money[indexMoney]} у.е., Ваш счет: {cashAccount} у.е.");                    
-                    indexMoney++;
-                }
-                else
-                {
-                    Console.WriteLine($"У клиента {clients.Peek()} не оказалось денег! Ваш счет: {cashAccount} у.е.");
-                }                
-                clients.Dequeue();
+            
+            while (money.Count != 0)
+            {                
+                cashAccount += money.Peek();
+                Console.WriteLine($"Клиент, оплатил товар на сумму {money.Peek()} у.е., Ваш счет: {cashAccount} у.е.");
+                money.Dequeue();
 
                 Console.WriteLine("Для продолжения нажмите любую клавишу...");
                 Console.ReadKey();
