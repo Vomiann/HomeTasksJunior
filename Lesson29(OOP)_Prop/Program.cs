@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lesson29_OOP__Properties
+namespace Lesson29_OOP__Prop
 {
     class Program
     {
@@ -32,11 +28,11 @@ namespace Lesson29_OOP__Properties
     }
 
     public class Render
-    {        
+    {
         public void DrawPlayer(int x, int y)
         {
-            Console.SetCursorPosition(x,y);
-            Console.WriteLine("Player");
+            Console.SetCursorPosition(x, y);
+            Console.WriteLine("@");
         }
     }
 }
