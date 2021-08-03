@@ -57,7 +57,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson27_PersonnelAccountin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson28(OOP)_Class", "Lesson28(OOP)_Class\Lesson28(OOP)_Class.csproj", "{8FFDDDE6-F5CE-48F1-879F-067103ECB583}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson30(OOP)_DBPlayers", "Дуыыщт30(OOP)_DBPlayers\Lesson30(OOP)_DBPlayers.csproj", "{6FBEEED5-1B52-40D2-832E-7FBCCD31C183}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson30(OOP)_DBPlayers", "Lesson30_OOP__DBPlayers\Lesson30(OOP)_DBPlayers.csproj", "{6FBEEED5-1B52-40D2-832E-7FBCCD31C183}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson29(OOP)_Prop", "Lesson29(OOP)_Prop\Lesson29(OOP)_Prop.csproj", "{6E83CA9C-43BE-4078-8F60-C105BB9CA4FA}"
 EndProject
