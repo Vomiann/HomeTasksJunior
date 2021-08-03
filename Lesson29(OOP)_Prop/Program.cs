@@ -7,8 +7,8 @@ namespace Lesson29_OOP__Prop
         static void Main(string[] args)
         {
             Player player = new Player();
-            Render draw = new Render();
-            draw.DrawPlayer(player.X, player.Y);
+            Render render = new Render();
+            render.DrawPlayer(player.X, player.Y);
 
             Console.ReadKey();
         }
