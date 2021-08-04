@@ -7,13 +7,14 @@ namespace Lesson30_OOP__DBPlayers
     {
         static void Main(string[] args)
         {
-            DataBase dataBase = new DataBase();
+            Database dataBase = new Database();
             dataBase.AddPlayer("Anubis", 1);
             dataBase.AddPlayer("Vom", 1);
             dataBase.AddPlayer("Zeus", 1);
-            dataBase.BannedPlayerById(1);
-            dataBase.BannedPlayerById(1);
-            dataBase.BannedPlayerById(5);
+            dataBase.BanPlayerById(1);
+            dataBase.BanPlayerById(1);
+            dataBase.BanPlayerById(5);
+            dataBase.ShowPlayers();
             dataBase.DeletePlayerByNickname("Test");
             dataBase.UnbanPlayerById(1);
             dataBase.UnbanPlayerById(1);
@@ -22,87 +23,85 @@ namespace Lesson30_OOP__DBPlayers
             dataBase.DeletePlayerByNickname("Zeus");
 
             dataBase.ShowPlayers();
-
+           
             Console.ReadKey();
         }
     }
 
     public class Player
     {
-        public int Id { get; set; }
+        public int UniqueId { get; set; }
         public string Nickname { get; set; }
         public int Level { get; set; }
-        public bool IsBanned { get; set; } = false;
+        public bool IsBan { get; set; } = false;
     }
 
 
-    public class DataBase
+    public class Database
     {
-        public static int IdentityPlayer { get; private set; }
-        public List<Player> Players { get; private set; } = new List<Player>();
+        private static int _identityPlayer;
+        private List<Player> _players = new List<Player>();
 
+        private Player FindPlayerById(int playerId)
+        {                       
+            foreach (var player in _players)
+            {
+                if (player.UniqueId == playerId)
+                {                    
+                    return player;
+                }
+            }
+
+            return null;
+        }
 
         public void ShowPlayers()
         {
-            foreach (var player in Players)
+            foreach (var player in _players)
             {
-                Console.WriteLine($"Id[{player.Id}], Ник:{player.Nickname}, Уровень:{player.Level}, Статус блокировки:{player.IsBanned} ");
+                Console.WriteLine($"Id[{player.UniqueId}], Ник: {player.Nickname}, Уровень: {player.Level}, Статус блокировки: {player.IsBan} ");
             }
         }
 
         public void AddPlayer(string nickName, int level)
         {
-            Players.Add(new Player { Id = IdentityPlayer, Nickname = nickName, Level = level });
-            Console.WriteLine($"Добавлен игрок: Id[{IdentityPlayer}], Ник:{nickName}, Уровень:{level}, Статус блокировки:{false}");
-            IdentityPlayer++;
+            _players.Add(new Player { UniqueId = _identityPlayer, Nickname = nickName, Level = level });
+            Console.WriteLine($"Добавлен игрок: Id[{_identityPlayer}], Ник: {nickName}, Уровень: {level}, Статус блокировки: {false}");
+            _identityPlayer++;
         }
 
-        public void BannedPlayerById(int playerId)
+        public void BanPlayerById(int playerId)
         {
-            foreach (var player in Players)
+            Player playerResult = FindPlayerById(playerId);
+
+            if (playerResult != null && playerResult.IsBan == false)
             {
-                if (player.Id == playerId && player.IsBanned == false)
-                {
-                    Console.WriteLine($"Игрок {player.Nickname} был забанен!");
-                    player.IsBanned = true;
-                }
-                else
-                {
-                    if (player.Id == playerId && player.IsBanned == true)
-                    {
-                        Console.WriteLine($"Игрок {player.Nickname} уже был забанен!");
-                    }
-                }
+                Console.WriteLine($"Игрок {playerResult.Nickname} был забанен!");
+                playerResult.IsBan = true;
+            }
+            else if(playerResult?.UniqueId == playerId && playerResult?.IsBan == true)
+            {
+                Console.WriteLine($"Игрок {playerResult.Nickname} уже был забанен!");
             }
 
-            if (playerId > Players.Count - 1 || playerId < 0)
+            if (playerResult == null)
             {
                 Console.WriteLine($"Игрока с Id[{playerId}] не существует!");
             }
-
         }
 
         public void UnbanPlayerById(int playerId)
         {
-            foreach (var player in Players)
-            {
-                if (player.Id == playerId && player.IsBanned == true)
-                {
-                    Console.WriteLine($"Игрок {player.Nickname} был разбанен!");
-                    player.IsBanned = false;
-                }
-                else
-                {
-                    if (player.Id == playerId && player.IsBanned == false)
-                    {
-                        Console.WriteLine($"Игрок {player.Nickname} уже был разбанен!");
-                    }
-                }
-            }
+            Player playerResult = FindPlayerById(playerId);
 
-            if (playerId > Players.Count - 1 || playerId < 0)
+            if (playerResult != null && playerResult.IsBan == true)
             {
-                Console.WriteLine($"Игрока с Id[{playerId}] не существует!");
+                Console.WriteLine($"Игрок {playerResult.Nickname} был разбанен!");
+                playerResult.IsBan = false;
+            }
+            else if(playerResult != null && playerResult?.IsBan == false)
+            {
+                Console.WriteLine($"Игрок {playerResult.Nickname} уже был разбанен!");
             }
         }
 
@@ -110,11 +109,11 @@ namespace Lesson30_OOP__DBPlayers
         {
             bool isNickname = false;
 
-            foreach (var player in Players)
+            foreach (var player in _players)
             {
                 if (player.Nickname == nickname)
                 {
-                    Players.Remove(player);
+                    _players.Remove(player);
                     Console.WriteLine($"Игрок {player.Nickname}, был удален!");
                     isNickname = true;
                     break;
@@ -125,7 +124,6 @@ namespace Lesson30_OOP__DBPlayers
             {
                 Console.WriteLine($"Игрока с Ником [{nickname}] не существует. Его не возможно удалить!");
             }
-
         }
     }
 }
