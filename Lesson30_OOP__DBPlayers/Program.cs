@@ -20,12 +20,12 @@ namespace Lesson30_OOP__DBPlayers
 
             while (isQuit != true)
             {                
-                Console.WriteLine($"{(int)MainMenu.AddPlayer} - Добавить игрока");
-                Console.WriteLine($"{(int)MainMenu.ShowAllPlayers} - Показать всех игроков");
-                Console.WriteLine($"{(int)MainMenu.BanPlayerById} - Забанить игрока по ИД");
-                Console.WriteLine($"{(int)MainMenu.UnbanPlayerById} - Разбанить игрока по ИД");
-                Console.WriteLine($"{(int)MainMenu.DeletePlayerByNickname} - Удалить игрока по нику");
-                Console.WriteLine($"{(int)MainMenu.Quit} - Выход из программы");
+                Console.WriteLine($"1 - Добавить игрока");
+                Console.WriteLine($"2 - Показать всех игроков");
+                Console.WriteLine($"3 - Забанить игрока по ИД");
+                Console.WriteLine($"4 - Разбанить игрока по ИД");
+                Console.WriteLine($"5 - Удалить игрока по нику");
+                Console.WriteLine($"6 - Выход из программы");
                 Console.WriteLine();
 
                 Console.Write("Выберете один из пунктов меню от 1 до 6: ");
@@ -33,7 +33,7 @@ namespace Lesson30_OOP__DBPlayers
 
                 switch (menuSection)
                 {
-                    case (int)MainMenu.AddPlayer:                        
+                    case 1:                        
                         Console.Write("Введите Ник игрока: ");
                         nickNameResult = Console.ReadLine();
 
@@ -43,29 +43,29 @@ namespace Lesson30_OOP__DBPlayers
                         dataBase.AddPlayer(nickNameResult, levelResult);
                         break;
 
-                    case (int)MainMenu.ShowAllPlayers:                        
+                    case 2:                        
                         dataBase.ShowPlayers();                        
                         break;
 
-                    case (int)MainMenu.BanPlayerById:                        
+                    case 3:                        
                         Console.Write("Укажите Ид игрока чтобы его забанить: ");
                         playerId = GetNumber();
                         dataBase.BanPlayerById(playerId);
                         break;
 
-                    case (int)MainMenu.UnbanPlayerById:                        
+                    case 4:                        
                         Console.Write("Укажите Ид игрока чтобы его разбанить: ");
                         playerId = GetNumber();
                         dataBase.UnbanPlayerById(playerId);
                         break;
 
-                    case (int)MainMenu.DeletePlayerByNickname:                        
+                    case 5:                        
                         Console.Write("Введите Ник игрока для его удаления: ");
                         nickNameResult = Console.ReadLine();
                         dataBase.DeletePlayerByNickname(nickNameResult);
                         break;
 
-                    case (int)MainMenu.Quit:
+                    case 6:
                         isQuit = true;
                         Console.WriteLine("Вы вышли из программы!");
                         break;
@@ -100,35 +100,25 @@ namespace Lesson30_OOP__DBPlayers
             return number;
         }
     }
-
-    public enum MainMenu
-    {
-        AddPlayer = 1,
-        ShowAllPlayers,
-        BanPlayerById,
-        UnbanPlayerById,
-        DeletePlayerByNickname,
-        Quit
-    }
-
+      
     public class Player
     {
+        private int _level;
         public int UniqueId { get; private set; }
-        public string Nickname { get; private set; }
-        public int Level { get; private set; }
+        public string Nickname { get; private set; }        
         public bool IsBan { get; private set; }
 
         public Player(int uniqueId, string nickname, int level)
         {
             UniqueId = uniqueId;
             Nickname = nickname;
-            Level = level;
+            _level = level;
             IsBan = false;
         }
 
         public void ShowPlayer()
         {
-            Console.WriteLine($"Id[{UniqueId}], Ник: {Nickname}, Уровень: {Level}, Статус блокировки: {IsBan}");
+            Console.WriteLine($"Id[{UniqueId}], Ник: {Nickname}, Уровень: {_level}, Статус блокировки: {IsBan}");
         }
 
         public void ChangeFieldIsBan(bool value)
@@ -146,20 +136,7 @@ namespace Lesson30_OOP__DBPlayers
         {            
             _players = new List<Player>();
         }
-
-        private Player FindPlayerById(int playerId)
-        {                       
-            foreach (var player in _players)
-            {               
-                if (player.UniqueId == playerId)
-                {
-                    return player;
-                }
-            }
-
-            return null;
-        }
-
+               
         public void ShowPlayers()
         {
             if (_players.Count > 0)
@@ -181,39 +158,7 @@ namespace Lesson30_OOP__DBPlayers
             Console.WriteLine($"Добавлен игрок: Id[{_identityPlayer}], Ник: {nickName}, Уровень: {level}, Статус блокировки: {false}");
             _identityPlayer++;
         }
-
-        private void ToggleStatus(int playerId, string message)
-        {
-            Player playerResult = FindPlayerById(playerId);
-
-            if (playerResult != null)
-            {
-                if (playerResult.IsBan == false && message == "забанен")
-                {
-                    Console.WriteLine($"Игрок {playerResult.Nickname} был {message}!");
-                    playerResult.ChangeFieldIsBan(true);
-                }
-                else if (playerResult.IsBan == true && message == "забанен")
-                {
-                    Console.WriteLine($"Игрок {playerResult.Nickname} уже был {message}!");
-                }
-                else if (playerResult.IsBan == true && message == "разбанен")
-                {
-                    Console.WriteLine($"Игрок {playerResult.Nickname} был {message}!");
-                    playerResult.ChangeFieldIsBan(false);
-                }
-                else if (playerResult.IsBan == false && message == "разбанен")
-                {
-                    Console.WriteLine($"Игрок {playerResult.Nickname} уже был {message}!");                    
-                }
-            }
-                       
-            if (playerResult == null)
-            {
-                Console.WriteLine($"Игрока с Id[{playerId}] не существует!");
-            }          
-        }
-
+        
         public void BanPlayerById(int playerId)
         {
             ToggleStatus(playerId, "забанен");
@@ -242,6 +187,51 @@ namespace Lesson30_OOP__DBPlayers
             if (isNickname == false)
             {
                 Console.WriteLine($"Игрока с Ником [{nickname}] не существует. Его не возможно удалить!");
+            }
+        }
+
+        private Player FindPlayerById(int playerId)
+        {
+            foreach (var player in _players)
+            {
+                if (player.UniqueId == playerId)
+                {
+                    return player;
+                }
+            }
+
+            return null;
+        }
+
+        private void ToggleStatus(int playerId, string message)
+        {
+            Player playerResult = FindPlayerById(playerId);
+
+            if (playerResult != null)
+            {
+                if (playerResult.IsBan == false && message == "забанен")
+                {
+                    Console.WriteLine($"Игрок {playerResult.Nickname} был {message}!");
+                    playerResult.ChangeFieldIsBan(true);
+                }
+                else if (playerResult.IsBan == true && message == "забанен")
+                {
+                    Console.WriteLine($"Игрок {playerResult.Nickname} уже был {message}!");
+                }
+                else if (playerResult.IsBan == true && message == "разбанен")
+                {
+                    Console.WriteLine($"Игрок {playerResult.Nickname} был {message}!");
+                    playerResult.ChangeFieldIsBan(false);
+                }
+                else if (playerResult.IsBan == false && message == "разбанен")
+                {
+                    Console.WriteLine($"Игрок {playerResult.Nickname} уже был {message}!");
+                }
+            }
+
+            if (playerResult == null)
+            {
+                Console.WriteLine($"Игрока с Id[{playerId}] не существует!");
             }
         }
     }
