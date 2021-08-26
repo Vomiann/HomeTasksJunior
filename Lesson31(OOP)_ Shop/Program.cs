@@ -7,21 +7,16 @@ namespace Lesson31_OOP___Shop
     {
         static void Main(string[] args)
         {
-            Seller seller = new Seller();
-            Player player = new Player();
-
-            seller.AddProduct("Празднийчный колпак", 3, "Головное украшение", 10);
-            seller.AddProduct("Венец дворфов", 2, "Выступает в роли фонарика", 500);
-            seller.AddProduct("Зелье исцеления", 1, "Полностью востанавливает здоровье", 100);
-
-            ShowMainMenu(seller, player);
-        }
-
-        static void ShowMainMenu(Seller seller, Player player)
-        {
             bool isQuit = false;
             int productId;
             string inputUser;
+
+            Seller seller = new Seller();
+            Player player = new Player();
+
+            seller.AddProduct("Празднийчный колпак", "Головное украшение", 10, 3);
+            seller.AddProduct("Венец дворфов", "Выступает в роли фонарика", 500, 2);
+            seller.AddProduct("Зелье исцеления", "Полностью востанавливает здоровье", 100, 1);
 
             while (isQuit != true)
             {
@@ -72,7 +67,10 @@ namespace Lesson31_OOP___Shop
                 Console.ReadKey();
                 Console.Clear();
             }
+
+            Console.ReadKey();
         }
+
         public static int GetNumber()
         {
             int number = 0;
@@ -92,76 +90,110 @@ namespace Lesson31_OOP___Shop
         }
     }
 
-    public class Player : Product
+    public class Player : Character
     {
         private static int _productId;
-        private int _coinsToPay;
-        public int Coins { get; private set; }
-        
+
         public Player()
         {
-            Products = new List<Product>();
+            _productId = -1;
             Coins = 500;
         }
 
-        public bool CheckSolvency(Product product, int countProduct)
+        public void AddProduct(string name, string description, int price, int amount)
         {
-            _coinsToPay = product.Price * countProduct;
-            if (Coins >= _coinsToPay)
+            if (CheckIsProductByName(name) == false)
             {
-                return true;
+                _productId++;
             }
-            else
-            {
-                _coinsToPay = 0;
-                return false;
-            }
+            AddProduct(_productId, name, description, price, amount);
         }
-
-        public int ToPay()
-        {
-            Coins -= _coinsToPay;
-            return _coinsToPay;
-        }
-
-        public override void AddProduct(string name, int amount, string description, int price)
-        {            
-            _identityProduct = _productId++;
-            base.AddProduct(name, amount, description, price);            
-        }        
     }
 
-    public class Seller : Product
+    public class Seller : Character
     {
-        public int Coins { get; private set; }
-        private int _defaultCountProduct;
-
+        private static int _productId;
         public Seller()
         {
-            Products = new List<Product>();
+            _productId = -1;
             Coins = 1000;
         }
 
-        public void SellProductById(int productId, Player player)
+        public void AddProduct(string name, string description, int price, int amount)
+        {
+            if (CheckIsProductByName(name) == false)
+            {
+                _productId++;
+            }
+            AddProduct(_productId, name, description, price, amount);
+        }
+    }
+
+    public class Product
+    {
+        public int ProductId { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public int Price { get; private set; }
+
+        public Product(int productId, string name, string description, int price)
+        {
+            ProductId = productId;
+            Name = name;
+            Description = description;
+            Price = price;
+        }
+    }
+
+    public abstract class Character
+    {
+        private List<Product> _products;        
+        private Dictionary<int, int> _countProducts;
+        private int _coinsToPay;
+        public int Coins { get; protected set; }
+
+        public Character()
+        {
+            _products = new List<Product>();
+            _countProducts = new Dictionary<int, int>();
+        }
+
+        public void ShowProducts()
+        {
+            if (_products.Count > 0)
+            {
+                foreach (var product in _products)
+                {
+                    int amountProduct = _countProducts[product.ProductId];
+                    Console.WriteLine($"Id[{product.ProductId}], Имя товара: {product.Name}, Кол-во: {amountProduct}, Описание: {product.Description}, Цена (за 1ед.): {product.Price} монет.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Товары отсутствуют!");
+            }
+        }
+
+        public void SellProductById(int productId, Character character)
         {
             bool isProduct = false;
-            _defaultCountProduct = 1;
+            int defaultCountProduct = 1;
 
-            foreach (var product in Products)
+            foreach (var product in _products)
             {
                 if (product.ProductId == productId)
                 {
                     isProduct = true;
 
-                    if (product.Amount > _defaultCountProduct)
+                    if (_countProducts[productId] > defaultCountProduct)
                     {
                         Console.Write($"Какое кол-во '{product.Name}' вы планируете купить? (Введите число): ");
-                        _defaultCountProduct = Program.GetNumber();
-                        CalculateCoins(product, player);
+                        defaultCountProduct = Program.GetNumber();
+                        CalculateCoins(product, character, defaultCountProduct);
                     }
                     else
                     {
-                        CalculateCoins(product, player);
+                        CalculateCoins(product, character, defaultCountProduct);
                     }
                     break;
                 }
@@ -171,19 +203,47 @@ namespace Lesson31_OOP___Shop
             {
                 Console.WriteLine("По указанному Ид товара не существует!");
             }
+        }                            
+        protected bool CheckIsProductByName(string name)
+        {
+            bool isProduct = false;
+
+            foreach (var product in _products)
+            {
+                if (product.Name == name)
+                {
+                    isProduct = true;
+                }
+            }
+
+            return isProduct;
         }
 
-        private void CalculateCoins(Product product, Player player)
+        protected void AddProduct(int identityProduct, string name, string description, int price, int amount)
         {
-            if (_defaultCountProduct <= product.Amount && _defaultCountProduct > 0)
+            if (GetProductIdByName(name) is int productId)
             {
-                if (player.CheckSolvency(product, _defaultCountProduct))
+                _countProducts[productId] += amount;
+            }
+            else
+            {
+                _countProducts.Add(identityProduct, amount);
+                _products.Add(new Product(identityProduct, name, description, price));
+            }
+        }
+
+        private void CalculateCoins(Product product, Character character, int defaultCountProduct)
+        {
+            if (defaultCountProduct <= _countProducts[product.ProductId] && defaultCountProduct > 0)
+            {
+                if (CheckSolvency(character, product, defaultCountProduct))
                 {
-                    int coinsResult = player.ToPay();
-                    RemoveAmountProduct(product, _defaultCountProduct);
-                    Coins += coinsResult;
-                    player.AddProduct(product.Name, _defaultCountProduct, product.Description, product.Price);
-                    Console.WriteLine($"Вы купили: {product.Name} в кол-ве {_defaultCountProduct} шт.");
+                    character.Coins -= _coinsToPay;
+                    _countProducts[product.ProductId] -= defaultCountProduct;
+                    Coins += _coinsToPay;
+                    character.AddProduct(product.ProductId, product.Name, product.Description, product.Price, defaultCountProduct);
+
+                    Console.WriteLine($"Вы купили: {product.Name} в кол-ве {defaultCountProduct} шт.");
                 }
                 else
                 {
@@ -195,65 +255,35 @@ namespace Lesson31_OOP___Shop
                 Console.WriteLine("Кол-во покупаемого товара не долждно быть больше или меньше того, что есть у торговца!");
             }
         }
-    }
 
-    public class Product
-    {        
-        public int ProductId { get; protected set; }
-        public string Name { get; protected set; }
-        public int Amount { get; protected set; }
-        public string Description { get; protected set; }
-        public int Price { get; protected set; }
-        public List<Product> Products { get; protected set; }
-
-        protected static int _identityProduct;
-
-        public virtual void AddProduct(string name, int amount, string description, int price)
+        private bool CheckSolvency(Character character, Product product, int countProduct)
         {
-            if (AddProductByName(name, amount) == false)
+            _coinsToPay = product.Price * countProduct;
+            if (character.Coins >= _coinsToPay)
             {
-                Products.Add(new Product() { ProductId = _identityProduct, Name = name, Amount = amount, Description = description, Price = price });
-                _identityProduct++;
+                return true;
             }
             else
             {
-                Amount += amount;
+                _coinsToPay = 0;
+                return false;
             }
         }
 
-        public void ShowProducts()
+        private int? GetProductIdByName(string name)
         {
-            if (Products.Count > 0)
-            {
-                foreach (var product in Products)
-                {
-                    Console.WriteLine($"Id[{product.ProductId}], Имя товара: {product.Name}, Кол-во: {product.Amount}, Описание: {product.Description}, Цена (за 1ед.): {product.Price} монет.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Товары отсутствуют!");
-            }
-        }
-
-        protected void RemoveAmountProduct(Product product, int amount)
-        {
-            product.Amount -= amount;
-        }
-               
-        private bool AddProductByName(string name, int amount)
-        {
-            bool isProduct = false;
-
-            foreach (var product in Products)
+            foreach (var product in _products)
             {
                 if (product.Name == name)
                 {
-                    isProduct = true;                    
-                    product.Amount += amount;
+                    if (_countProducts.ContainsKey(product.ProductId) == true)
+                    {
+                        return product.ProductId;
+                    }
                 }
             }
-            return isProduct;
+
+            return null;
         }
     }
 }
