@@ -90,72 +90,27 @@ namespace Lesson31_OOP___Shop
         }
     }
 
-    public class Player : Character
-    {
-        private static int _productId;
-
-        public Player()
-        {
-            _productId = -1;
-            Coins = 500;
-        }
-
-        public void AddProduct(string name, string description, int price, int amount)
-        {
-            if (CheckIsProductByName(name) == false)
-            {
-                _productId++;
-            }
-            AddProduct(_productId, name, description, price, amount);
-        }
-    }
-
-    public class Seller : Character
-    {
-        private static int _productId;
-        public Seller()
-        {
-            _productId = -1;
-            Coins = 1000;
-        }
-
-        public void AddProduct(string name, string description, int price, int amount)
-        {
-            if (CheckIsProductByName(name) == false)
-            {
-                _productId++;
-            }
-            AddProduct(_productId, name, description, price, amount);
-        }
-    }
-
-    public class Product
-    {
-        public int ProductId { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public int Price { get; private set; }
-
-        public Product(int productId, string name, string description, int price)
-        {
-            ProductId = productId;
-            Name = name;
-            Description = description;
-            Price = price;
-        }
-    }
-
     public abstract class Character
     {
-        private List<Product> _products;        
+        private List<Product> _products;
         private Dictionary<int, int> _countProducts;
         private int _coinsToPay;
+        private static int _productId;
         public int Coins { get; protected set; }
 
         public Character()
         {
             _products = new List<Product>();
             _countProducts = new Dictionary<int, int>();
+        }
+
+        public void AddProduct(string name, string description, int price, int amount)
+        {
+            if (CheckIsProductByName(name) == false)
+            {
+                _productId++;
+            }
+            AddProductWithId(_productId, name, description, price, amount);
         }
 
         public void ShowProducts()
@@ -203,8 +158,8 @@ namespace Lesson31_OOP___Shop
             {
                 Console.WriteLine("По указанному Ид товара не существует!");
             }
-        }                            
-        protected bool CheckIsProductByName(string name)
+        }
+        private bool CheckIsProductByName(string name)
         {
             bool isProduct = false;
 
@@ -218,8 +173,7 @@ namespace Lesson31_OOP___Shop
 
             return isProduct;
         }
-
-        protected void AddProduct(int identityProduct, string name, string description, int price, int amount)
+        private void AddProductWithId(int identityProduct, string name, string description, int price, int amount)
         {
             if (GetProductIdByName(name) is int productId)
             {
@@ -241,7 +195,7 @@ namespace Lesson31_OOP___Shop
                     character.Coins -= _coinsToPay;
                     _countProducts[product.ProductId] -= defaultCountProduct;
                     Coins += _coinsToPay;
-                    character.AddProduct(product.ProductId, product.Name, product.Description, product.Price, defaultCountProduct);
+                    character.AddProductWithId(product.ProductId, product.Name, product.Description, product.Price, defaultCountProduct);
 
                     Console.WriteLine($"Вы купили: {product.Name} в кол-ве {defaultCountProduct} шт.");
                 }
@@ -284,6 +238,37 @@ namespace Lesson31_OOP___Shop
             }
 
             return null;
+        }
+    }
+    public class Player : Character
+    {
+        public Player()
+        {
+            Coins = 500;
+        }
+    }
+
+    public class Seller : Character
+    {
+        public Seller()
+        {
+            Coins = 1000;
+        }
+    }
+
+    public class Product
+    {
+        public int ProductId { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public int Price { get; private set; }
+
+        public Product(int productId, string name, string description, int price)
+        {
+            ProductId = productId;
+            Name = name;
+            Description = description;
+            Price = price;
         }
     }
 }
