@@ -12,7 +12,7 @@ namespace Lesson31_OOP___Shop
             string inputUser;
 
             Seller seller = new Seller();
-            Player player = new Player();
+            Player player = new Player();                       
 
             seller.AddProduct("Празднийчный колпак", "Головное украшение", 10, 3);
             seller.AddProduct("Венец дворфов", "Выступает в роли фонарика", 500, 2);
